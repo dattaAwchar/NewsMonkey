@@ -34,6 +34,9 @@ export class News extends Component {
     }
 
     async updateNews() {
+
+        this.props.setProgress(20)        
+
         // API Key 1 of codermythos@gmail.com
         const url = `https://newsapi.org/v2/top-headlines?q=${this.props.topic}&apiKey=fb8040db9d6a475b861c834e602855c6&page=${this.state.page}&pageSize=${this.props.pageSize}`;
 
@@ -43,16 +46,20 @@ export class News extends Component {
         
 
         this.setState({ loadingGif: true });
+        this.props.setProgress(40)
 
         let data = await fetch(url);
+        this.props.setProgress(60)
         let parsedData = await data.json();
         console.log(parsedData); // Check the API response here
-
+        this.props.setProgress(80)
         this.setState({
             articles: parsedData.articles || [], // Fallback to an empty array if no articles
             totalResults: parsedData.totalResults,
             loadingGif: false,
         });
+        this.props.setProgress(100)        
+
     }
 
     async componentDidMount() {
