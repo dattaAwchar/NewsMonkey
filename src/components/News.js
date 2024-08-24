@@ -38,12 +38,7 @@ export class News extends Component {
         this.props.setProgress(20)        
 
         // API Key 1 of codermythos@gmail.com
-        const url = `https://newsapi.org/v2/top-headlines?q=${this.props.topic}&apiKey=fb8040db9d6a475b861c834e602855c6&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-
-        // Random API Key 1: 389bbcdd6e22476dbbe3df02eb5cd7fa
-        // DattaAwchar API Key 2: fb8040db9d6a475b861c834e602855c6
-        // CoderMythos API Key 3: 973da49828eb474c847c39a733d36f5d
-        
+        const url = `https://newsapi.org/v2/top-headlines?q=${this.props.topic}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;        
 
         this.setState({ loadingGif: true });
         this.props.setProgress(40)
@@ -82,7 +77,7 @@ export class News extends Component {
         this.setState({ page: this.state.page + 1 })
 
         // API Key 1 of codermythos@gmail.com
-        const url = `https://newsapi.org/v2/top-headlines?q=${this.props.topic}&apiKey=fb8040db9d6a475b861c834e602855c6&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+        const url = `https://newsapi.org/v2/top-headlines?q=${this.props.topic}&apiKey=${this.props.apiKey}=${this.state.page}&pageSize=${this.props.pageSize}`;
 
         let data = await fetch(url);
         let parsedData = await data.json();
